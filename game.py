@@ -5,10 +5,9 @@ points = 0
 score = 0
 win = 0
 lose = 0
-
 start = True
 
-while start == True:
+while start:
     try:
         win = int(input("How many points do you want to win with? "))
     except:
@@ -29,50 +28,26 @@ while True:
         continue
 
     computer = random.randint(1, 3)
-
+    computer_string = {
+    1: "rock",
+    2: "paper",
+    3: "scissors"
+    }
+    
     if computer == player:
         print("Computer chose the same, tie!")
-
         print(f"Your Points = {points}")
         print(f"Computers Points = {score}\n")
 
-    elif computer == 1 and player == 2:
-        print("Computer chose rock, you win!")
+    elif computer == 1 and player == 2 or computer == 2 and player == 3 or computer == 3 and player == 1:
+        print(f"Computer chose {computer_string.get(computer)}, you win!")
 
         points += 1
         print(f"Your Points = {points}")
         print(f"Computers Points = {score}\n")
 
-    elif computer == 2 and player == 3:
-        print("Computer chose paper, you win!")
-
-        points += 1
-        print(f"Your Points = {points}")
-        print(f"Computers Points = {score}\n")
-
-    elif computer == 3 and player == 1:
-        print("Computer chose scissors, you win!")
-
-        points += 1
-        print(f"Your Points = {points}")
-        print(f"Computers Points = {score}\n")
-
-    elif computer == 1 and player == 3:
-        print("Computer chose rock, you lose!")
-
-        score += 1
-        print(f"Your Points = {points}")
-        print(f"Computers Points = {score}\n")
-
-    elif computer == 2 and player == 1:
-        print("Computer chose paper, you lose!")
-
-        score += 1
-        print(f"Your Points = {points}")
-        print(f"Computers Points = {score}\n")
-
-    elif computer == 3 and player == 2:
-        print("Computer chose scissors, you lose!")
+    elif computer == 1 and player == 3 or computer == 2 and player == 1 or computer == 3 and player == 2:
+        print(f"Computer chose {computer_string.get(computer)}, you lose!")
 
         score += 1
         print(f"Your Points = {points}")
